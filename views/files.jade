@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    if error
+        p= error
+    else if !files
+        p error: files is undefined
+    else
+        #filesDiv
+            h2 Current Dir: #{currentDir}
+            ul
+                each val in files
+                    li
+                        a(href=val.path)=val.name
+            form(method='post' action='/fileupload' enctype='multipart/form-data')
+               input(type='hidden' name='dir' id='currentDir' value= currentDir)
+               input(type='file' name='file' multiple='multiple')
+               br
+               input(type='submit' value='Upload')
+            script(src="//code.jquery.com/jquery-1.11.0.min.js")
+            script(src="/javascripts/files.js")

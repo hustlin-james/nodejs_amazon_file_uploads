@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Login
+  if loginError
+    p= loginError
+  if msg
+    p= msg
+  form(method='post' action='/login')
+    label Username: 
+    input(type='text' name='username')
+    br
+    label Password:
+    input(type='password' name='password')
+    br
+    input(type='submit' value='Submit')

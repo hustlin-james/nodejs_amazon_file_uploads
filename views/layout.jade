@@ -1,0 +1,10 @@
+doctype
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    if user
+        p you are logged in as: #{user}
+        a(href='/logout') logout
+    block content
